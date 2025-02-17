@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+
+        body{
+            background-color: rgb(249, 226, 245);
+        }
+
+        /* Définir l'animation pour alterner entre les images */
+            @keyframes changerImage {
+        0%, 50% {
+            background-image: url('pictures/bbyboo_bg.png'); /* Première image */
+        }
+        60%, 100% {
+            background-image: url('pictures/bbyboo_bg2.png'); /* Deuxième image */
+        }
+        }
+
+        /* Créer un conteneur pour les images */
+        .image-container {
+            width: 380px; /* Largeur du conteneur */
+            height: 330px; /* Hauteur du conteneur */
+            background-size: cover;
+            animation: changerImage 2s infinite; /* Animation de changement d'images */
+            margin: 0;
+        }
+
+        .image-container .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container .children{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+
+        .main .button-container {
+            position: relative;
+            margin-top: 10%;
+            width: 400px; /* Largeur de l'image */
+            height: 200px; /* Hauteur de l'image */
+            background-image: url('pictures/bulle0.png'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px; /* Arrondir les bords de l'image si désiré */
+        }
+
+        /* Style pour le texte à l'intérieur de l'image */
+        .main .button-container .text {
+            color: black;
+            font-size: 12px;
+            font-family: 'Press Start 2P', cursive;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(237, 200, 237, 0.7); /* Ombre pour le texte */
+            text-align: center;
+            margin-top: -14.5%;
+        }
+
+        .children .button-container_child {
+            position: relative;
+            margin-top: -40%;
+            width: 120px; /* Largeur de l'image */
+            height:150px;
+            background-image: url('pictures/bulle1.png'); /* Remplacez par votre image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .children .button-container_child:hover {
+            background-image: url('pictures/bulle1_h.png'); /* Remplacez par votre image */
+        }
+
+        /* Style pour le texte à l'intérieur de l'image */
+        .children .button-container_child .text_child {
+            color: black;
+            font-size: 12px;
+            font-family: 'Press Start 2P', cursive;
+            font-weight: bold;
+            text-decoration: wavy;
+            text-shadow: 2px 2px 4px rgba(237, 200, 237, 0.7); /* Ombre pour le texte */
+            text-align: center;
+            margin-top: 110px;
+        }
+        .children .button-container_child .text_child:hover{
+            color: blueviolet;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <div class="main">
+            <div class="button-container">
+                <div class="text"> 
+                    Do you <br>
+                    like cows ?
+                </div>
+            </div>
+        </div>
+
+        <div class="children">
+
+            <a href="yes.html" class="button-container_child">
+                <div class="text_child"> 
+                    Yey! 
+                </div>
+            </a>
+
+            <a href="no.html" class="button-container_child">
+                <div class="text_child"> 
+                    Nope 
+                </div>
+            </a>
+
+        </div>
+       
+    </div>
+    
+</body>
+</html>

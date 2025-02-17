@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+
+        body{
+            background-color: rgb(249, 226, 245);
+        }
+
+        /* Définir l'animation pour alterner entre les images */
+            @keyframes changerImage {
+        0%, 50% {
+            background-image: url('pictures/bbyboo_bg.png'); /* Première image */
+        }
+        60%, 100% {
+            background-image: url('pictures/bbyboo_bg2.png'); /* Deuxième image */
+        }
+        }
+
+        /* Créer un conteneur pour les images */
+        .image-container {
+            width: 380px; /* Largeur du conteneur */
+            height: 330px; /* Hauteur du conteneur */
+            background-size: cover;
+            animation: changerImage 2s infinite; /* Animation de changement d'images */
+            margin: 0;
+            
+        }
+
+        .cow-container {
+            position: absolute;
+            width: 305px; /* Largeur du conteneur */
+            height: 295px; /* Hauteur du conteneur */
+            top:28px;
+            left: 38px;
+            /* border: 5px solid greenyellow; */
+            overflow: hidden;
+        }
+
+        .cow-container .cow {
+            position: absolute;  
+            width: 250px;
+            height: 200px;
+            left:20px;
+            background-image: url('pictures/cow1.png'); /* L'image initiale */
+            background-size: cover;
+            background-position: center;
+            animation: moveUp 7s, switchImage 1.5s infinite;
+            animation-fill-mode: forwards;
+        }
+
+        .cow-container .cow_open {
+            position: absolute;  
+            width: 250px;
+            height: 200px;
+            bottom: 0;
+            left:20px;
+            background-image: url('pictures/cow1.png'); /* L'image initiale */
+            background-size: cover;
+            background-position: center;
+            animation: switchImage_open 6s infinite;
+        }
+
+        .cow-container .bulle {
+            position: absolute;  
+            width: 250px;
+            height: 100px;
+            left:20px;
+            background-image: url('pictures/bulle.png'); /* L'image initiale */
+            background-size: cover;
+            background-position: center;
+            animation: moveUp_bis 14s;
+            animation-fill-mode: forwards;
+        }
+
+        .text {
+            position: absolute;  
+            width: 140px;
+            top: 54px;
+            height: 35px;
+            left:110px;
+            /* border: 5px solid red; */
+            overflow: hidden;
+            border-radius: 35%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        /* Animation de montée */
+        @keyframes moveUp {
+            0% {
+                bottom: -100%;
+            }
+            100% {
+                bottom: 0; /* L'image se déplace vers le haut de la page */
+            }
+        }
+
+        @keyframes moveUp_bis {
+            0% {
+                bottom: -300%;
+            }
+            40% {
+                bottom: 0;
+            }
+            100% {
+                bottom: 75%; /* L'image se déplace vers le haut de la page */
+            }
+        }
+
+        /* Animation pour alterner les images */
+        @keyframes switchImage {
+            0% {
+                background-image: url('pictures/cow1.png');
+            }
+            50% {
+                background-image: url('pictures/cow2.png'); /* Changer vers la deuxième image */
+            }
+            100% {
+                background-image: url('pictures/cow1.png');
+            }
+        }
+
+        @keyframes switchImage_open{
+            0% {
+                background-image: url('pictures/cow1.png');
+            }
+            5% {
+                background-image: url('pictures/cow_open1.png');
+            }
+            12.5% {
+                background-image: url('pictures/cow_open2.png');
+            }
+            25% {
+                background-image: url('pictures/cow2.png'); /* Changer vers la deuxième image */
+            }
+            30% {
+                background-image: url('pictures/cow_open1.png');
+            }
+            37.5% {
+                background-image: url('pictures/cow_open2.png');
+            }
+            42.5% {
+                background-image: url('pictures/cow_open1.png');
+            }
+            50% {
+                background-image: url('pictures/cow2.png');
+            }
+            60% {
+                background-image: url('pictures/cow1.png');
+            }
+            75% {
+                background-image: url('pictures/cow2.png');
+            }
+            85% {
+                background-image: url('pictures/cow1.png');
+            }
+            100% {
+                background-image: url('pictures/cow2.png');
+            }
+        }
+
+        #message {
+            color: black;
+            font-size: 12px;
+            font-family: 'Press Start 2P', cursive;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <div class="cow-container">
+            <div class="bulle">
+
+            </div>
+            <div id="animation" class="cow"></div>
+        </div>
+
+        <div class="text">
+            <div id="message"></div>
+        </div>
+
+    </div>
+
+
+    
+    <script>
+        const message = "Mooo :(";
+        const element = document.getElementById("message");
+        let i = 0;
+
+        function afficherLettre() {
+            if (i < message.length) {
+                element.textContent += message.charAt(i);
+                setTimeout(afficherLettre, 300); // 100ms entre chaque lettre
+                i++;
+            }
+        }
+
+        setTimeout(afficherLettre, 14000);
+
+        setTimeout(() => {
+            const element = document.getElementById("animation");
+            element.classList.remove("cow"); // Retirer la première animation
+            element.classList.add("cow_open");    // Ajouter la deuxième animation
+        }, 14000);
+        
+    </script>
+</body>
+</html>
